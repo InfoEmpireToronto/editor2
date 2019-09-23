@@ -3,7 +3,7 @@
 <head>
 <title>Editor 2.0</title>
 
-    <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
 
 <script type="" src="node_modules/jquery/dist/jquery.min.js"></script>
