@@ -22,7 +22,7 @@ $all = $a->getAll();
               {$article['title']}
             </div>
             <div class='col-lg'>
-              <a href='/edit.php?id={$article['id']}'>Edit</a>
+              <a href='{$config['AppURL']}edit.php?id={$article['id']}'>Edit</a>
             </div>
             </div>";
     }

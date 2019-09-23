@@ -5,7 +5,7 @@
 <div class="container">
   <div class="row">
     <div class="col-lg">
-      <form method="post" action="proc.php">
+      <form method="post" action="<?=$config['AppURL'];?>proc.php">
         Title: <input type="text" name="title" value="" required>
       Body: <textarea id="mytextarea" name="body"></textarea>
         Meta Title: <input type="text" name="metaTitle" value="">
