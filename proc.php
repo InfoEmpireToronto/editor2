@@ -27,6 +27,6 @@ if(isset($_REQUEST['id']))
 
 }
 
-header("Location: /"); 
+header("Location: ".$config['AppURL']); 
 // dd($_REQUEST);
 ?>
