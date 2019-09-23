@@ -6,11 +6,11 @@
     <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
 
-<script type="" src="/node_modules/jquery/dist/jquery.min.js"></script>
-<script type="" src="/node_modules/popper.js/dist/umd/popper.min.js"></script>
-<script type="" src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script type="" src="node_modules/jquery/dist/jquery.min.js"></script>
+<script type="" src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+<script type="" src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-<script type="" src="/node_modules/tinymce/tinymce.min.js"></script>
+<script type="" src="node_modules/tinymce/tinymce.min.js"></script>
 <script>
   tinymce.init({
     selector: '#mytextarea',  // change this value according to your HTML
