@@ -9,7 +9,7 @@ if(isset($_REQUEST['p']))
   if($_REQUEST['p'] == $config['password'] && $_REQUEST['u'] == $config['login'])
   {
     $_SESSION['UserData']['Username'] = '1';
-    header('location: '.$config['AppURL']);
+    header('location: '.$config['AppLocation']);
   }
 }
 
@@ -28,6 +28,5 @@ if(isset($_REQUEST['p']))
 </div>
 
 <?php include('inc/foot.php'); 
-dd($_REQUEST);
 
 ?>
