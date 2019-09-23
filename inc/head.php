@@ -4,7 +4,7 @@ session_start();
 
 
 if(!isset($_SESSION['UserData']['Username']) && $_SERVER['SCRIPT_NAME'] != $config['AppURL'].'login.php'){
-	header("location:login.php");
+	header("location: {$config['AppURL']}login.php");
 	exit;
 }
 
