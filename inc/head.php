@@ -1,9 +1,9 @@
 <?php include_once('config.php'); 
 session_start();
 
-print_r($_SERVER['SCRIPT_NAME']);die();
+// print_r($_SERVER['SCRIPT_NAME']);die();
 
-if(!isset($_SESSION['UserData']['Username']) && $_SERVER['SCRIPT_NAME'] != $config['AppURL'].'login.php'){
+if(!isset($_SESSION['UserData']['Username']) && $_SERVER['SCRIPT_NAME'] != $config['AppLocation'].'login.php'){
 	header("location: {$config['AppURL']}login.php");
 	exit;
 }
