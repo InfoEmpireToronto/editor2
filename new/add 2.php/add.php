@@ -1,20 +1,15 @@
-<?php 
-include('inc/head.php');
-include('inc/nav.php'); 
-include('functions.php');
+<?php include('inc/head.php'); ?>
 
-$articleObj = new Article($_GET['id']);
-$article = $articleObj->article();
+<?php include('inc/nav.php'); ?>
 
-?>
 <section class="pt-5 pb-5">
-
 <div class="container">
   <div class="row">
-   
     <div class="col-lg">
       <form method="post" action="<?=$config['AppURL'];?>proc.php">
-		  <div class="form-group">
+		  
+		  
+		   <div class="form-group">
 			   <label for="type1"><h3>Type of post:</h3></label>
 			   <select name="type" class="form-control">
       		<option value="article">Article</option>
@@ -27,7 +22,7 @@ $article = $articleObj->article();
       	<label><h3>Title:</h3></label> <input type="text" name="title" value="<?=$article['title']?>" class="form-control" required>
 		  </div>
 		  <div class="form-group">
-	    <label><h3>Contents:</h3></label> <textarea id="mytextarea" rows="20" name="body" class="form-control"><?=$article['body']?></textarea>
+	    <label><h3>Contents:</h3></label> <textarea rows="20" id="mytextarea" name="body" class="form-control"><?=$article['body']?></textarea>
 		  </div>
 		  <div class="form-group">
       	<label><h3>Meta Title:</h3></label> <input type="text" name="metaTitle" value="<?=$article['metaTitle']?>" class="form-control">
@@ -39,16 +34,13 @@ $article = $articleObj->article();
 		  <div class="form-group">
 		  <label><h3>Publication Date:</h3></label> <input type="date" name="pubDate" value="<?=$article['pubDate']?>" class="form-control" required>
 		  </div>
-
 		  
-		  <div class="form-group">
+		   <div class="form-group">
 		  <div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck1" name="active" value="1" <?=$article['active']?'checked':'';?>>
+  <input type="checkbox" class="custom-control-input" id="customCheck1" name="active" value="1">
   <label class="custom-control-label" for="customCheck1"> <strong>Active</strong></label>
 </div>
 			    </div>
-		  
-		  
 		  
 		  <div class="form-group">
 		  
@@ -57,9 +49,25 @@ $article = $articleObj->article();
       	
       	<input type="hidden" name="id" value="<?=$article['id']?>" required>
 		  </div>
-	  </form>
+		  
+<!--
+        Title: <input type="text" name="title" value="" required>
+      Body: <textarea id="mytextarea" name="body"></textarea>
+        Meta Title: <input type="text" name="metaTitle" value="">
+        Meta Description: <input type="text" name="metaDesc" value="">
+        Type: <select name="type">
+          <option value="article">Article</option>
+          <option value="FAQ">FAQ</option>
+
+        </select>
+        Publication Date: <input type="date" name="pubDate" value="" required>
+        Active: <input type="checkbox" name="active" value="1" >
+      <button>Save</button>
+-->
+        
+      </form>
     </div>
   </div>
 </div>
-</section>
+
 <?php include('inc/foot.php'); ?>

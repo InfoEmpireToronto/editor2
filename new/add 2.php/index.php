@@ -5,7 +5,7 @@ include('functions.php');
 
 
 
-$a = new Article();
+$a = new Article(1);
 $all = $a->getAll();
 
 ?>
@@ -13,8 +13,8 @@ $all = $a->getAll();
 <section class="pt-5 pb-5">
 
 <div class="container">
-  <div class="row">
-    <div class="col-lg">
+	<div class="row">
+		<div class="col-lg">
 <div class="table-responsive-sm">
   <table class="table table-bordered">
   <tbody>
@@ -33,10 +33,10 @@ $all = $a->getAll();
     }
 
     ?>
-    </tbody>
-  </table>
-  </div>
-    </div>
+	  </tbody>
+	</table>
+	</div>
+		</div>
 </div>
 </div>
 </section>

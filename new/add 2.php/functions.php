@@ -137,22 +137,6 @@ class Article
 		$this->db->query("INSERT INTO articles ($fields) VALUES ($vals)");
 	}
 
-	public function addCat($name)
-	{
-		$this->db->query("INSERT INTO categories (`name`) VALUES ('$name')");
-
-	}
-
-	public function getAllCats()
-	{
-		return $this->db->getAll("SELECT * FROM categories");
-	}
-
-	public function categoryName($id)
-	{
-		return $this->db->getRow("SELECT * FROM categories WHERE id = $id")['name'];
-	}
-
 }
 
 function dd($d)

@@ -13,8 +13,3 @@ CREATE TABLE `articles` (
 
 
 
-CREATE TABLE `categories` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(145) NOT NULL,
-  PRIMARY KEY (`id`));
-
