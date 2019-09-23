@@ -3,10 +3,11 @@ include('inc/head.php');
 include('inc/nav.php'); 
 include('functions.php');
 
+
+
 $a = new Article(1);
 $all = $a->getAll();
 
-// dd($all); 
 ?>
 
 

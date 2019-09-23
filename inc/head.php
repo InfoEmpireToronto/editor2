@@ -1,4 +1,15 @@
-<?php include_once('config.php'); ?>
+<?php include_once('config.php'); 
+session_start();
+
+
+
+if(!isset($_SESSION['UserData']['Username']) && $_SERVER['SCRIPT_NAME'] != '/login.php'){
+	header("location:login.php");
+	exit;
+}
+
+
+?>
 
 <!DOCTYPE html>
 <html>
