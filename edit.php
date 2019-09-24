@@ -17,11 +17,11 @@ $article = $articleObj->article();
 		  <div class="form-group">
 			   <label for="type1"><h3>Type of post:</h3></label>
 			   <select name="type" class="form-control">
-      		<option value="article">Article</option>
-      		<option value="FAQ">FAQ</option>
+	      		<option value="article">Article</option>
+	      		<option value="FAQ">FAQ</option>
 
-      	</select>
-		  </div>
+	      	</select>
+			  </div>
 		  
 		  <div class="form-group">
       	<label><h3>Title:</h3></label> <input type="text" name="title" value="<?=$article['title']?>" class="form-control" required>
@@ -41,14 +41,14 @@ $article = $articleObj->article();
 		  </div>
 
 		  
-		  <div class="form-group">
-		  <div class="custom-control custom-checkbox">
-  <input type="checkbox" class="custom-control-input" id="customCheck1" name="active" value="1" <?=$article['active']?'checked':'';?>>
-  <label class="custom-control-label" for="customCheck1"> <strong>Active</strong></label>
-</div>
-			    </div>
-		  
-		  
+		<div class="form-group">
+			<div class="custom-control custom-checkbox">
+				<input type="checkbox" class="custom-control-input" id="customCheck1" name="active" value="1" <?=$article['active']?'checked':'';?>>
+				<label class="custom-control-label" for="customCheck1"> <strong>Active</strong></label>
+			</div>
+		</div>
+			  
+			  
 		  
 		  <div class="form-group">
 		  
