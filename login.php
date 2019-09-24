@@ -1,5 +1,5 @@
 <?php 
-include('functions.php');
+include_once('functions.php');
 
 
 if(isset($_REQUEST['p']))
@@ -16,16 +16,26 @@ include('inc/nav.php');
 ?>
 
 
+<section class="pt-5 pb-5">
 
 <div class="container">
+  <div class="col-md-6 offset-md-3">
   
    <form action="login.php" method="POST">
-     User: <input type="text" name='u' />
-     Password: <input type="password" name='p' />
-     <button>Submit</button>
+     <div class="form-group">
+       <label>User:</label>
+      <input type="text" name='u' class="form-control" />
+     </div>
+       <div class="form-group">
+       <label>Password:</label>
+      <input type="password" name='p' class="form-control"  />
+     </div>
+        <div class="form-group text-center">
+     <button class="btn btn-primary btn-lg">Submit</button></div>
    </form>
-
 </div>
+</div>
+</section>
 
 <?php include('inc/foot.php'); 
 

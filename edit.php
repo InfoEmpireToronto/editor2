@@ -1,7 +1,7 @@
 <?php 
 include('inc/head.php');
 include('inc/nav.php'); 
-include('functions.php');
+
 
 $articleObj = new Article($_GET['id']);
 $article = $articleObj->article();
@@ -39,6 +39,25 @@ $article = $articleObj->article();
 		  <div class="form-group">
 		  <label><h3>Publication Date:</h3></label> <input type="date" name="pubDate" value="<?=$article['pubDate']?>" class="form-control" required>
 		  </div>
+
+		  <?php if($config['enable_categories']) { ?>
+       <div class="form-group">
+         <label for="type1"><h3>Category:</h3></label>
+         <select name="category" class="form-control">
+          <option value="0">N/A</option>
+
+          <?php 
+            $a = new Article();
+            foreach($a->getAllCats() as $cat)
+            {
+            	$add = $cat['id'] == $article['category'] ? 'selected' : '';
+              echo "<option value='{$cat['id']}' $add>{$cat['name']}</option>";
+            }
+          ?>
+
+        </select>
+      </div>
+<?php } ?>
 
 		  
 		<div class="form-group">

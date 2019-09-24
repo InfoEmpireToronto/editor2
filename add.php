@@ -17,6 +17,8 @@
 
         </select>
       </div>
+
+
       
       <div class="form-group">
         <label><h3>Title:</h3></label> <input type="text" name="title" value="" class="form-control" required>
@@ -34,6 +36,24 @@
       <div class="form-group">
       <label><h3>Publication Date:</h3></label> <input type="date" name="pubDate" value="" class="form-control" required>
       </div>
+
+<?php if($config['enable_categories']) { ?>
+       <div class="form-group">
+         <label for="type1"><h3>Category:</h3></label>
+         <select name="category" class="form-control">
+          <option value="0">N/A</option>
+
+          <?php 
+            $a = new Article();
+            foreach($a->getAllCats() as $cat)
+            {
+              echo "<option value='{$cat['id']}'>{$cat['name']}</option>";
+            }
+          ?>
+
+        </select>
+      </div>
+<?php } ?>
       
        <div class="form-group">
       <div class="custom-control custom-checkbox">

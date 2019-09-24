@@ -12,6 +12,10 @@ $data = [
 	'type' => $_REQUEST['type']
 ];
 
+if(isset($_REQUEST['category']))
+{
+	$data['category'] = $_REQUEST['category'];
+}
 
 if(isset($_REQUEST['id']))
 {

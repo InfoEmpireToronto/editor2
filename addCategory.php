@@ -1,9 +1,6 @@
 <?php 
 include('inc/head.php'); 
 include('inc/nav.php'); 
-include('functions.php');
-
-
 
 $a = new Article();
 $categories = $a->getAllCats();
