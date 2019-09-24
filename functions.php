@@ -143,12 +143,6 @@ class Article
 
 	}
 
-	public function updateCat($id, $name)
-	{
-		$this->db->query("UPDATE categories SET `name` = '$name' WHERE `id` = $id");
-
-	}
-
 	public function getAllCats()
 	{
 		return $this->db->getAll("SELECT * FROM categories");

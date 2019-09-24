@@ -20,25 +20,23 @@ $categories = $a->getAllCats();
       <button>Save</button>
         
       </form>
-      <hr />
-      <h2>All Categories</h2>
 
-      <form method="post" action="<?=$config['AppURL'];?>procCat.php">
-        <input type="hidden" name="updateAll" value="1">
       <?php
       if(count($categories))
         foreach($categories as $cat)
         {
           echo "<div class='row'>
             <div class='col-lg'>
-              <input type='text' value='{$cat['name']}' name='c[{$cat['id']}]' />
+              {$cat['name']}
+            </div>
+            <div class='col-lg'>
+              <a href='{$config['AppURL']}edit.php?id={$cat['id']}'>Edit</a>
             </div>
             </div>";
         }
 
       ?>
-      <button>Save</button>
-      </form>
+
     </div>
   </div>
 </div>

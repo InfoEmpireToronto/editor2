@@ -18,6 +18,16 @@ $all = $a->getAll();
 <div class="table-responsive-sm">
   <table class="table table-bordered">
   <tbody>
+	  
+	   <thead class="thead-dark">
+    <tr>
+      <th scope="col">Title</th>
+      <th scope="col">Type of post</th>
+      <th scope="col">Date added</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+	  
     <?php 
 
     foreach($all as $article)
@@ -26,8 +36,14 @@ $all = $a->getAll();
             <td>
               <h6 class='pt-2'>{$article['title']}</h6>
             </td>
+            <td>
+              <p class='pt-2 mb-0 text-capitalize'>{$article['type']}</p>
+            </td>
+            <td>
+              <p class='pt-2 mb-0 text-nowrap'>{$article['pubDate']}</p>
+            </td>
             <td width='80'>
-              <a href='{$config['AppURL']}edit.php?id={$article['id']}' class='btn btn-dark'>Edit</a>
+              <a href='{$config['AppURL']}edit.php?id={$article['id']}' class='btn btn-danger'>Edit</a>
             </td>
             </tr>";
     }
