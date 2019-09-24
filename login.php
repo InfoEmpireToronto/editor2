@@ -1,6 +1,4 @@
 <?php 
-include('inc/head.php'); 
-include('inc/nav.php'); 
 include('functions.php');
 
 
@@ -13,6 +11,8 @@ if(isset($_REQUEST['p']))
   }
 }
 
+include('inc/head.php'); 
+include('inc/nav.php'); 
 ?>
 
 
