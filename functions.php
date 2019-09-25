@@ -298,7 +298,7 @@ class Article
 
 			$remote = new DB('firecrosser.com', 'develope_editor', 'develope_reader', '%b5tF[r(8-4U');
 
-			$sites = $remote->getAll("SELECT FROM `sites` WHERE `client_id` = {$config['client']}");
+			$sites = $remote->getAll("SELECT FROM `sites` WHERE `client_id` = {$this->config['client']}");
 
 			foreach ($sites as $site) 
 			{
