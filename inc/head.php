@@ -28,9 +28,9 @@ if(!isset($_SESSION['UserData']['Username']) && $_SERVER['SCRIPT_NAME'] != $conf
   tinymce.init({
     selector: '#mytextarea',  // change this value according to your HTML
 	plugins: [
-	    'advlist autolink lists link image imagetools charmap print preview anchor',
-	    'searchreplace visualblocks code fullscreen',
-	    'insertdatetime media table paste code help wordcount'
+	    'advlist autolink lists link image imagetools charmap anchor',
+	    'searchreplace visualblocks fullscreen',
+	    'insertdatetime media table paste wordcount'
 	  ],
 	file_browser_callback: function(field_name, url, type, win) {
 	    // win.document.getElementById(field_name).value = 'my browser value';
