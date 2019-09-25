@@ -159,6 +159,8 @@ class Article
 		return $this->db->getRow("SELECT * FROM categories WHERE id = $id")['name'];
 	}
 
+	
+
 }
 
 function dd($d)
