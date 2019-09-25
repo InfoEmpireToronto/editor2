@@ -306,8 +306,8 @@ class Article
 				foreach($posts as $post)
 				{
 					$data = [
-						'title' => mysqli_real_escape_string($post['title']),
-						'body' => mysqli_real_escape_string($post['content']),
+						'title' => mysqli_real_escape_string($remote, $post['title']),
+						'body' => mysqli_real_escape_string($remote, $post['content']),
 						'active' => $post['status'],
 						'pubDate' => $post['date_modified'],
 						'type' => $post['type'] == 0 ? 'FAQ' : 'article'
