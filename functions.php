@@ -303,16 +303,18 @@ class Article
 			foreach ($sites as $site) 
 			{
 				$posts = $remote->getAll("SELECT * FROM `posts` WHERE `site_id` = {$site['id']}");
+				foreach($posts as $post)
+				{
+					$data = [
+						'title' => $posts['title'],
+						'body' => $posts['content'],
+						'active' => $posts['status'],
+						'pubDate' => $posts['date_modified'],
+						'type' => $posts['type'] == 0 ? 'FAQ' : 'article'
+					];
 
-				$data = [
-					'title' => $posts['title'],
-					'body' => $posts['content'],
-					'active' => $posts['status'],
-					'pubDate' => $posts['date_modified'],
-					'type' => $posts['type'] == 0 ? 'FAQ' : 'article'
-				];
-
-				Article()->add($data);
+					(new Article())->add($data);
+				}
 			}
 		}
 
