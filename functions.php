@@ -306,11 +306,11 @@ class Article
 				foreach($posts as $post)
 				{
 					$data = [
-						'title' => $posts['title'],
-						'body' => $posts['content'],
-						'active' => $posts['status'],
-						'pubDate' => $posts['date_modified'],
-						'type' => $posts['type'] == 0 ? 'FAQ' : 'article'
+						'title' => $post['title'],
+						'body' => $post['content'],
+						'active' => $post['status'],
+						'pubDate' => $post['date_modified'],
+						'type' => $post['type'] == 0 ? 'FAQ' : 'article'
 					];
 
 					(new Article())->add($data);
