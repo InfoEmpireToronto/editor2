@@ -38,6 +38,7 @@ if(!isset($_SESSION['UserData']['Username']) && $_SERVER['SCRIPT_NAME'] != $conf
 
 	},
 	images_upload_url: 'postAcceptor.php',
+	  automatic_uploads: true,
 	// menubar: "insert",
 	// toolbar: "media"
   });

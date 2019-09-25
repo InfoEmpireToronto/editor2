@@ -64,7 +64,7 @@ class DB
 		    // Again, do not do this on a public site, but we'll show you how
 		    // to get the error information
 		    echo "Error: Our query failed to execute and here is why: \n";
-		    echo "Query: " . $q . "\n";
+		    echo "Query: <code>" . $q . "</code>\n";
 		    echo "Errno: " . $this->mysqli->errno . "\n";
 		    echo "Error: " . $this->mysqli->error . "\n";
 		    exit;
@@ -118,6 +118,11 @@ class Article
 		return $this->data;
 	}
 
+	function set($key, $val)
+	{
+		$this->data[$key] = $val;
+	}
+
 	function update($d)
 	{
 		$a = '';
@@ -127,6 +132,9 @@ class Article
 			{
 				$a .= ', ';
 			}
+			if($key == 'body' || $key == 'title')
+				$val = mysqli_real_escape_string($this->db->mysqli(), $val);
+			
 			$a .= " `$key` = '$val' ";
 		}
 		// $a = implode(', ', $d);
@@ -144,6 +152,9 @@ class Article
 				$fields .= ', ';
 				$vals .= ', ';
 			}
+			if($key == 'body' || $key == 'title')
+				$val = mysqli_real_escape_string($this->db->mysqli(), $val);
+
 			$fields .= " `$key`";
 			$vals .= " '$val' ";
 		}
@@ -194,6 +205,8 @@ class Article
 		foreach($p as $post)
 		{
 		    $t = new Article($post['id']);
+		    $t->set('body', stripslashes($t->article()['body']));
+		    $t->set('title', stripslashes($t->article()['title']));
 		    if($t->data['pubDate'])
 		    {
 			    $t->data['pubDate'] = date_create_from_format('Y-m-d', $t->data['pubDate']);
