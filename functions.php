@@ -15,15 +15,7 @@ class DB
 
 		if ($this->mysqli->connect_errno) 
 		{
-		    // The connection failed. What do you want to do? 
-		    // You could contact yourself (email?), log the error, show a nice page, etc.
-		    // You do not want to reveal sensitive information
-
-		    // Let's try this:
-		    echo "Sorry, this website is experiencing problems.";
-
-		    // Something you should not do on a public site, but this example will show you
-		    // anyways, is print out MySQL error related information -- you might log this
+		   
 		    echo "Error: Failed to make a MySQL connection, here is why: \n";
 		    echo "Errno: " . $this->mysqli->connect_errno . "\n";
 		    echo "Error: " . $this->mysqli->connect_error . "\n";
@@ -39,6 +31,13 @@ class DB
 		$result = $this->query($q);
 
 		return $result->fetch_assoc();
+	}
+
+	public function getValue($q)
+	{
+		$result = $this->query($q);
+
+		return $result->fetch_array(MYSQLI_NUM)[0];
 	}
 
 	public function getAll($q)
@@ -82,6 +81,8 @@ class Article
 {
 	private $data;
 	private $db;
+	
+	public $date_utc;
 
 	// public $article = { return $this->data; };
 
@@ -159,8 +160,105 @@ class Article
 		return $this->db->getRow("SELECT * FROM categories WHERE id = $id")['name'];
 	}
 
-	
 
+//Reader Functions
+	public function getPosts($type, $range)
+	{
+	    $add = '';
+		if($type != 'all')
+			$add = "AND `type` = '$type' ";
+
+        $q = "
+			SELECT * 
+			  FROM articles 
+			 WHERE `id` >= {$range[0]} 
+			   	   $add
+			 LIMIT {$range[1]}
+		";
+		$p = $this->db->getAll($q);
+		
+		$out = [];
+		foreach($p as $post)
+		{
+		    $t = new Article($post['id']);
+		    $t->data['pubDate'] = date_create_from_format('Y-m-d', $t->data['pubDate']);
+            $t->data['pubDate'] = date_format($t->data['pubDate'], 'F d Y');
+
+
+			$out[] = $t;
+			
+		}
+        
+		return $out;
+	}
+
+	public function getPostCount()
+	{
+		return $this->db->getValue("SELECT count(*) FROM articles");
+	}
+
+    function getURL($prefix = 'events-')
+	{		
+		return $prefix . urlencode(trim(str_replace('#', '', $this->data['title']))) . '-' . $this->data['id'];
+	}
+	
+	function getImage(&$start = null, &$length = null)
+	{
+		$text = $this->data['body'];
+		if(($imageStart = strpos($text, '<img')) !== false)
+		{
+			$start = $imageStart;
+			$imageSourceStart = strpos($text, 'src=', $imageStart) + 5;
+			$imageSourceLength = strcspn($text, "\"'", $imageSourceStart);
+			$imageAltStart = strpos($text, 'alt=', $imageStart) + 5;
+			if($imageAltStart)
+			{
+				$imageAltLength = strcspn($text, "\"'", $imageAltStart);
+			}
+
+			$imageEnd = strpos($text, '>', $imageStart) + 1;
+			while(0 === strpos(substr($text, $imageEnd), '<br>'))
+			{
+				$imageEnd += 4;
+			}
+
+			$length = $imageEnd - $imageStart;
+			return 
+			[
+				'src' => substr($text, $imageSourceStart, $imageSourceLength),
+				'alt' => substr($text, $imageAltStart, $imageAltLength)
+			];
+		}
+		else
+		{
+			return false;
+		}
+	}
+	function extractImage()
+	{
+		$start = 0;
+		$length = 0;
+		$image = $this->getImage($start, $length);
+		$this->data['body'] = substr_replace($this->data['body'], '', $start, $length);
+		return $image;
+	}
+	function getSummary($chars = 100)
+	{
+		$text = $this->data['body'];
+		// Change to the number of characters you want to display   
+		$orig = strip_tags($text);  
+		$text = $orig . " ";
+		$text = substr($text, 0, $chars);
+		$text = substr($text, 0, strrpos($text,' '));
+	
+		// Add ... if the text actually needs shortening
+		if (strlen($orig) > $chars) {
+				$text = $text."...";
+		}
+		return $text;
+	}
+	
+	
 }
 
 function dd($d)
