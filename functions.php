@@ -194,8 +194,12 @@ class Article
 		foreach($p as $post)
 		{
 		    $t = new Article($post['id']);
-		    $t->data['pubDate'] = date_create_from_format('Y-m-d', $t->data['pubDate']);
-            $t->data['pubDate'] = date_format($t->data['pubDate'], 'F d Y');
+		    if($t->data['pubDate'])
+		    {
+			    $t->data['pubDate'] = date_create_from_format('Y-m-d', $t->data['pubDate']);
+	            $t->data['pubDate'] = date_format($t->data['pubDate'], 'F d Y');
+		    	
+		    }
 
 
 			$out[] = $t;
