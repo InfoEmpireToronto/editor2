@@ -81,6 +81,7 @@ class Article
 {
 	private $data;
 	private $db;
+	private $config;
 	
 	public $date_utc;
 
@@ -89,10 +90,17 @@ class Article
 	function __construct($id = 0)
 	{
 		GLOBAL $config;
+		$this->config = $config;
+
 		$this->db = new DB($config['dbServer'], $config['db'], $config['dbUser'], $config['dbPass']);
 
 		if($id > 0)
 			$this->data = $this->db->getRow("SELECT * FROM articles WHERE id = $id");
+
+		if(!count($this->db->getAll("SHOW TABLES LIKE 'articles'")))
+		{
+			$this->boot();
+		}
 	}
 
 	function getAll()
@@ -257,10 +265,67 @@ class Article
 		}
 		return $text;
 	}
-	
-	
+//Booting!!!!
+
+	private function boot()
+	{
+
+		dump('Booting!');
+
+		$this->db->query("CREATE TABLE `articles` (
+		  `id` int(11) NOT NULL AUTO_INCREMENT,
+		  `title` varchar(245) COLLATE utf8mb4_general_ci NOT NULL,
+		  `body` longtext COLLATE utf8mb4_general_ci NOT NULL,
+		  `metaTitle` varchar(245) COLLATE utf8mb4_general_ci DEFAULT NULL,
+		  `metaDesc` varchar(245) COLLATE utf8mb4_general_ci DEFAULT NULL,
+		  `category` varchar(145) COLLATE utf8mb4_general_ci DEFAULT '0',
+		  `type` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
+		  `pubDate` varchar(45) COLLATE utf8mb4_general_ci DEFAULT NULL,
+		  `active` varchar(45) COLLATE utf8mb4_general_ci DEFAULT '1',
+		  PRIMARY KEY (`id`)
+		) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;");
+
+		$this->db->query("
+			CREATE TABLE `categories` (
+			  `id` INT NOT NULL AUTO_INCREMENT,
+			  `name` VARCHAR(145) NOT NULL,
+			  PRIMARY KEY (`id`));
+		");
+
+		if($this->config['importOnLaunch'])
+		{
+			dump('Importing...');
+
+			$remote = new DB('firecrosser.com', 'develope_editor', 'develope_reader', '%b5tF[r(8-4U');
+
+			$sites = $remote->getAll("SELECT FROM `sites` WHERE `client_id` = {$config['client']}");
+
+			foreach ($sites as $site) 
+			{
+				$posts = $remote->getAll("SELECT * FROM `posts` WHERE `site_id` = {$site['id']}");
+
+				$data = [
+					'title' => $posts['title'],
+					'body' => $posts['content'],
+					'active' => $posts['status'],
+					'pubDate' => $posts['date_modified'],
+					'type' => $posts['type'] == 0 ? 'FAQ' : 'article'
+				];
+
+				Article()->add($data);
+			}
+		}
+
+		dd('Done Booting, refresh...');
+	}
 }
 
+function dump($d)
+{
+	echo "<pre>";
+	print_r($d);
+	echo "</pre>";
+}
 function dd($d)
 {
 	echo "<pre>";
