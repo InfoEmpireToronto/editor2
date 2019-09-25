@@ -5,7 +5,7 @@
 		<a href='<?=$config['AppURL'];?>add.php' class="nav-link btn btn-danger">Add Blog/FAQ</a>
 
 		<?php if($config['enable_categories']) { ?>
-		<li><a href='<?=$config['AppURL'];?>addCategory.php' class="nav-link btn btn-danger">Add Category</a></li>
+		<a href='<?=$config['AppURL'];?>addCategory.php' class="nav-link btn btn-danger">Add Category</a>
 		<?php } ?>
 
 	</div>
