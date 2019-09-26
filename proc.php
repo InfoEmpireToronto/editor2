@@ -33,5 +33,5 @@ if(isset($_REQUEST['id']))
 }
 
 header("Location: ".$config['AppURL']); 
-// dd($_REQUEST);
+dd($_REQUEST);
 ?>
