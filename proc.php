@@ -9,6 +9,7 @@ $data = [
 	'metaDesc' => $_REQUEST['metaDesc'],
 	'active' => $_REQUEST['active'],
 	'pubDate' => $_REQUEST['pubDate'],
+	'created_date' => date('Y-m-d H:i:s'),
 	'type' => $_REQUEST['type']
 ];
 
