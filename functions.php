@@ -130,7 +130,7 @@ class Article
 		$this->data[$key] = $val;
 		$this->$key = $val;
 		// $this->title = $this->data['title'];
-		// $this->content = $this->data['body'];
+		$this->content = $this->data['body'];
 	}
 
 	function update($d)
