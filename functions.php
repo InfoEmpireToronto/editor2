@@ -89,6 +89,8 @@ class Article
 	private $config;
 	
 	public $date_utc;
+	public $title;
+	public $content;
 
 	// public $article = { return $this->data; };
 
@@ -100,7 +102,11 @@ class Article
 		$this->db = new DB($config['dbServer'], $config['db'], $config['dbUser'], $config['dbPass']);
 
 		if($id > 0)
+		{
 			$this->data = $this->db->getRow("SELECT * FROM articles WHERE id = $id");
+			$this->title = $this->data['title'];
+			$this->content = $this->data['body'];
+		}
 
 		if(!count($this->db->getAll("SHOW TABLES LIKE 'articles'")))
 		{
