@@ -106,7 +106,7 @@ class Article
 			$this->data = $this->db->getRow("SELECT * FROM articles WHERE id = $id");
 			$this->title = $this->data['title'];
 			$this->content = $this->data['body'];
-			$this->date_utc = new DateTime($this->data['created_date']);
+			$this->date_utc = (new DateTime($this->data['created_date']))->getTimestamp();
 		}
 
 		if(!count($this->db->getAll("SHOW TABLES LIKE 'articles'")))
@@ -128,10 +128,10 @@ class Article
 	function set($key, $val)
 	{
 		$this->data[$key] = $val;
-		$this->$key = $val;
+		// $this->$key = $val;
 		// $this->title = $this->data['title'];
-		$this->content = $this->data['body'];
-		$this->date_utc = $this->data['pubDate'];
+		// $this->content = $this->data['body'];
+		// $this->date_utc = $this->data['pubDate'];
 	}
 
 	function update($d)
