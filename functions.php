@@ -416,7 +416,7 @@ class Article
 			}
 		}
 
-		dd('Done Booting, refresh...');
+		dump('Done Booting, refresh...');
 	}
 
 	function reset()
