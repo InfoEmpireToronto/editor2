@@ -41,7 +41,9 @@
 <?php if($config['enable_categories']) { ?>
        <div class="form-group">
          <label for="type1"><h3>Category:</h3></label>
-         <select name="category" class="form-control">
+                  <input type="text" name="category" value="<?=$article['category']?>" class="form-control" >
+
+        <!--  <select name="category" class="form-control">
           <option value="0">N/A</option>
 
           <?php 
@@ -52,7 +54,7 @@
             }
           ?>
 
-        </select>
+        </select> -->
       </div>
 <?php } ?>
       
