@@ -216,8 +216,8 @@ class Article
 		    $t->set('title', stripslashes($t->article()['title']));
 		    if($t->data['pubDate'])
 		    {
-			    $t->data['pubDate'] = date_create_from_format('Y-m-d', $t->data['pubDate']);
-	            $t->data['pubDate'] = date_format($t->data['pubDate'], 'F d Y');
+			    // $t->data['pubDate'] = date_create_from_format('Y-m-d', $t->data['pubDate']);
+	            $t->data['pubDate'] = new DateTime($t->data['pubDate']);//date_format($t->data['pubDate'], 'F d Y');
 		    	
 		    }
 
