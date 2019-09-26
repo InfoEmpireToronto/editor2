@@ -32,7 +32,7 @@ if(!isset($_SESSION['UserData']['Username']) && $_SERVER['SCRIPT_NAME'] != $conf
 	plugins: [
 	    'advlist autolink lists link image imagetools charmap anchor',
 	    'searchreplace visualblocks fullscreen',
-	    'insertdatetime media table paste wordcount source'
+	    'insertdatetime media table paste wordcount code'
 	  ],
 	file_browser_callback: function(field_name, url, type, win) {
 	    // win.document.getElementById(field_name).value = 'my browser value';
