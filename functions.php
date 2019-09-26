@@ -303,6 +303,7 @@ class Article
 		  `category` varchar(145) COLLATE utf8mb4_general_ci DEFAULT '0',
 		  `type` varchar(45) COLLATE utf8mb4_general_ci NOT NULL,
 		  `pubDate` varchar(45) COLLATE utf8mb4_general_ci DEFAULT NULL,
+		  `created_date` varchar(45) COLLATE utf8mb4_general_ci DEFAULT NULL,
 		  `active` varchar(45) COLLATE utf8mb4_general_ci DEFAULT '1',
 		  PRIMARY KEY (`id`)
 		) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;");
@@ -331,7 +332,7 @@ class Article
 						'title' => mysqli_real_escape_string($remote->mysqli(), $post['title']),
 						'body' => mysqli_real_escape_string($remote->mysqli(), $post['content']),
 						'active' => $post['status'],
-						'pubDate' => $post['date_modified'],
+						'created_date' => $post['date_created'],
 						'type' => $post['type'] == 0 ? 'FAQ' : 'article'
 					];
 
@@ -349,6 +350,7 @@ class Article
 						'metaDesc' => $post['meta_description'],
 						'active' => $post['status'],
 						'pubDate' => $post['date_display'],
+						'created_date' => $post['date_created'],
 						'type' => 'news'
 					];
 
@@ -364,7 +366,8 @@ class Article
 						'category' => $post['category'],
 						'active' => $post['status'],
 						'pubDate' => $post['date_display'],
-						'type' => 'faq'
+						'created_date' => $post['date_created'],
+						'type' => 'FAQ'
 					];
 
 					(new Article())->add($data);
