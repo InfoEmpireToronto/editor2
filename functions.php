@@ -169,7 +169,7 @@ class Article
 				$vals .= ', ';
 			}
 			if($key == 'body' || $key == 'title')
-				$val = mysqli_real_escape_string($this->db->mysqli(), $val);
+				$val = mysqli_real_escape_string(stripslashes($this->db->mysqli()), $val);
 
 			$fields .= " `$key`";
 			$vals .= " '$val' ";
