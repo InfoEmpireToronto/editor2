@@ -128,6 +128,9 @@ class Article
 	function set($key, $val)
 	{
 		$this->data[$key] = $val;
+		$this->$key = $val;
+		// $this->title = $this->data['title'];
+		// $this->content = $this->data['body'];
 	}
 
 	function update($d)
@@ -217,7 +220,7 @@ class Article
 		    if($t->data['pubDate'])
 		    {
 			    // $t->data['pubDate'] = date_create_from_format('Y-m-d', $t->data['pubDate']);
-	            $t->data['pubDate'] = (new DateTime($t->data['pubDate']))->format('F d Y');//date_format($t->data['pubDate'], 'F d Y');
+	            $t->set('pubDate', (new DateTime($t->data['pubDate']))->format('F d Y'));//date_format($t->data['pubDate'], 'F d Y');
 		    	
 		    }
 
