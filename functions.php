@@ -246,7 +246,7 @@ class Article
 	
 	function getImage(&$start = null, &$length = null)
 	{
-		$text = $this->data['body'];
+		$text = stripslashes($this->data['body']);
 		if(($imageStart = strpos($text, '<img')) !== false)
 		{
 			$start = $imageStart;
