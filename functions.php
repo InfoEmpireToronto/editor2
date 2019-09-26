@@ -344,8 +344,8 @@ class Article
 				foreach($posts as $post)
 				{
 					$data = [
-						'title' => mysqli_real_escape_string($remote->mysqli(), stripslashes($post['title'])),
-						'body' => mysqli_real_escape_string($remote->mysqli(), stripslashes($post['content'])),
+						'title' => mysqli_real_escape_string($remote->mysqli(), $post['title']),
+						'body' => mysqli_real_escape_string($remote->mysqli(), $post['content']),
 						'active' => $post['status'],
 						'created_date' => $post['date_created'],
 						'type' => $post['type'] == 0 ? 'FAQ' : 'article'
@@ -356,11 +356,12 @@ class Article
 
 
 				$news = $remote->getAll("SELECT * FROM `news` WHERE `site_id` = {$site['id']}");
+				dump($news);
 				foreach($news as $post)
 				{
 					$data = [
-						'title' => mysqli_real_escape_string($remote->mysqli(), stripslashes($post['title'])),
-						'body' => mysqli_real_escape_string($remote->mysqli(), stripslashes($post['content'])),
+						'title' => mysqli_real_escape_string($remote->mysqli(), $post['title']),
+						'body' => mysqli_real_escape_string($remote->mysqli(), $post['content']),
 						'metaTitle' => $post['meta_title'],
 						'metaDesc' => $post['meta_description'],
 						'active' => $post['status'],
@@ -376,8 +377,8 @@ class Article
 				foreach($faq as $post)
 				{
 					$data = [
-						'title' => mysqli_real_escape_string($remote->mysqli(), stripslashes($post['title'])),
-						'body' => mysqli_real_escape_string($remote->mysqli(), stripslashes($post['content'])),
+						'title' => mysqli_real_escape_string($remote->mysqli(), $post['question']),
+						'body' => mysqli_real_escape_string($remote->mysqli(), $post['answer']),
 						'category' => $post['category'],
 						'active' => $post['status'],
 						'pubDate' => $post['date_display'],
