@@ -7,4 +7,8 @@ $a = new Article();
 $a->reset();
 
 
+
+
 ?>
+
+<a href="/editor">HOME</a>
