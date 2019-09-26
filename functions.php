@@ -99,8 +99,11 @@ class Article
 		if($id > 0)
 		{
 			$this->data = $this->db->getRow("SELECT * FROM articles WHERE id = $id");
-			$this->title = stripslashes($this->data['title']);
-			$this->content = stripslashes($this->data['body']);
+			$this->data['body'] = stripslashes($this->data['body']);
+			$this->data['title'] = stripslashes($this->data['title']);
+
+			$this->title = $this->data['title'];
+			$this->content = $this->data['body'];
 			$this->meta_description = $this->data['metaDesc'];
 			$this->date_utc = (new DateTime($this->data['created_date']))->getTimestamp();
 		}
@@ -246,7 +249,7 @@ class Article
 	
 	function getImage(&$start = null, &$length = null)
 	{
-		$text = stripslashes($this->data['body']);
+		$text = $this->data['body'];
 		if(($imageStart = strpos($text, '<img')) !== false)
 		{
 			$start = $imageStart;
