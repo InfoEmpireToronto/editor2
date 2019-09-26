@@ -201,6 +201,17 @@ class Article
 		return $this->db->getRow("SELECT * FROM categories WHERE id = $id")['name'];
 	}
 
+	public function sortByCat($data)
+	{
+		$out = [];
+		foreach($data as $val)
+		{
+			$out[$val['category']][] = $val;
+		}
+
+		return $out;
+	}
+
 
 //Reader Functions
 	public function getPosts($type, $range)
