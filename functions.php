@@ -340,7 +340,7 @@ class Article
 
 
 				$news = $remote->getAll("SELECT * FROM `news` WHERE `site_id` = {$site['id']}");
-				foreach($news as $new)
+				foreach($news as $post)
 				{
 					$data = [
 						'title' => mysqli_real_escape_string($remote->mysqli(), $post['title']),
@@ -356,7 +356,7 @@ class Article
 				}
 
 				$faq = $remote->getAll("SELECT * FROM `faq` WHERE `site_id` = {$site['id']}");
-				foreach($news as $new)
+				foreach($faq as $post)
 				{
 					$data = [
 						'title' => mysqli_real_escape_string($remote->mysqli(), $post['question']),
