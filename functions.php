@@ -206,7 +206,7 @@ class Article
 		$out = [];
 		foreach($data as $val)
 		{
-			$out[$val['category']][] = $val;
+			$out[$val->category][] = $val;
 		}
 
 		return $out;
