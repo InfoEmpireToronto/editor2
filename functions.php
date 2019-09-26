@@ -101,6 +101,7 @@ class Article
 			$this->data = $this->db->getRow("SELECT * FROM articles WHERE id = $id");
 			$this->title = $this->data['title'];
 			$this->content = $this->data['body'];
+			$this->meta_description = $this->data['metaDesc'];
 			$this->date_utc = (new DateTime($this->data['created_date']))->getTimestamp();
 		}
 
