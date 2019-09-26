@@ -198,6 +198,7 @@ class Article
 			  FROM articles 
 			 WHERE `id` >= {$range[0]} 
 			   	   $add
+			 ORDER BY created_date DESC
 			 LIMIT {$range[1]}
 		";
 		$p = $this->db->getAll($q);
