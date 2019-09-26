@@ -17,9 +17,9 @@ $article = $articleObj->article();
 		  <div class="form-group">
 			   <label for="type1"><h3>Type of post:</h3></label>
 			   <select name="type" class="form-control">
-	      		<option value="article">Article</option>
-	      		<option value="news">News</option>
-	      		<option value="FAQ">FAQ</option>
+	      		<option value="article" <?=$article['type'] == 'article' ? 'selected' : '';?> >Article</option>
+	      		<option value="news" <?=$article['type'] == 'news' ? 'selected' : '';?>>News</option>
+	      		<option value="FAQ" <?=$article['type'] == 'FAQ' ? 'selected' : '';?>>FAQ</option>
 
 	      	</select>
 			  </div>
