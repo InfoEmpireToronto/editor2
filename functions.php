@@ -62,7 +62,8 @@ class DB
 		    echo "Query: <code>" . $q . "</code>\n";
 		    echo "Errno: " . $this->mysqli->errno . "\n";
 		    echo "Error: " . $this->mysqli->error . "\n";
-		    exit;
+		    // exit;
+		    
 		}
 
 		return $result;
