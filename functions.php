@@ -214,7 +214,12 @@ class Article
 
 	public function getRandom($num, $data)
 	{
-		return array_rand($data, $num);
+		foreach(array_rand($data, $num) as $k)
+		{
+			$out[] = $data[$k];
+		}
+		return $out;
+
 	}
 
 
