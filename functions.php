@@ -191,15 +191,15 @@ class Article
 	{
 	    $add = '';
 		if($type != 'all')
-			$add = "AND `type` = '$type' ";
+			$add = " WHERE `type` = '$type' ";
 
         $q = "
 			SELECT * 
 			  FROM articles 
-			 WHERE `id` >= {$range[0]} 
+			 -- WHERE `id` >= {$range[0]} 
 			   	   $add
 		  ORDER BY created_date DESC
-			 LIMIT {$range[1]}
+			 LIMIT {$range[0]}, {$range[1]}
 		";
 		$p = $this->db->getAll($q);
 		
