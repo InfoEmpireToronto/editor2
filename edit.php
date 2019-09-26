@@ -76,7 +76,7 @@ $article = $articleObj->article();
 		  
 	    <button type="submit" class="btn btn-primary btn-lg">Save</button>
       	
-      	<input type="hidden" name="id" value="<?=$article['id']?>" required>
+      	<input type="hidden" name="id" value="<?=$article['id']?>" >
 		  </div>
 	  </form>
     </div>

@@ -1,4 +1,5 @@
 <?php 
+header("Content-Type: text/html; charset=ISO-8859-1");
 
 include_once('config.php'); 
 include_once('functions.php');
@@ -7,6 +8,7 @@ if(!isset($_SESSION['UserData']['Username']) && $_SERVER['SCRIPT_NAME'] != $conf
 	header("location: {$config['AppURL']}login.php");
 	exit;
 }
+
 
 
 ?>
