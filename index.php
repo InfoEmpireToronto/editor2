@@ -36,7 +36,7 @@ $all = $a->getAll();
               <p class='pt-2 mb-0 text-capitalize'>{$article['type']}</p>
             </td>
             <td>
-              <p class='pt-2 mb-0 text-nowrap'>{$article['pubDate']}</p>
+              <p class='pt-2 mb-0 text-nowrap'>{$article['created_date']}</p>
             </td>
             <td width='80'>
               <a href='{$config['AppURL']}edit.php?id={$article['id']}' class='btn btn-danger'>Edit</a>
