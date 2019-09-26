@@ -284,8 +284,8 @@ class Article
 		$start = 0;
 		$length = 0;
 		$image = $this->getImage($start, $length);
-		dd([$this->data['body'], '', $start, $length]);
 		$this->data['body'] = substr_replace($this->data['body'], '', $start, $length);
+		dd([$this->data['body'], '', $start, $length]);
 		return $image;
 	}
 	function getSummary($chars = 100)
