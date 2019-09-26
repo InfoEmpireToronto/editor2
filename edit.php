@@ -27,7 +27,7 @@ $article = $articleObj->article();
       	<label><h3>Title:</h3></label> <input type="text" name="title" value="<?=$article['title']?>" class="form-control" required>
 		  </div>
 		  <div class="form-group">
-	    <label><h3>Contents:</h3></label> <textarea id="mytextarea" rows="20" name="body" class="form-control"><?=$article['body']?></textarea>
+	    <label><h3>Contents:</h3></label> <textarea id="mytextarea" rows="20" name="body" class="form-control"><?=stripslashes($article['body'])?></textarea>
 		  </div>
 		  <div class="form-group">
       	<label><h3>Meta Title:</h3></label> <input type="text" name="metaTitle" value="<?=$article['metaTitle']?>" class="form-control">
