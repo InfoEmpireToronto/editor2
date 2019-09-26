@@ -111,6 +111,16 @@ class Article
 		}
 	}
 
+	function __get($property)
+	{
+		return $this->data[$property];
+	}
+	function __set($property, $value)
+	{
+		$this->data[$property] = $value;
+	}
+
+
 	function getAll()
 	{
 		return $this->db->getAll("SELECT * FROM articles");
