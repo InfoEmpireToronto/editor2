@@ -212,6 +212,11 @@ class Article
 		return $out;
 	}
 
+	public function getRandom($num, $data)
+	{
+		return array_rand($data, $num);
+	}
+
 
 //Reader Functions
 	public function getPosts($type, $range)
