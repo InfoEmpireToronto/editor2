@@ -356,9 +356,9 @@ class Article
 
 
 				$news = $remote->getAll("SELECT * FROM `news` WHERE `site_id` = {$site['id']}");
-				dump($news);
 				foreach($news as $post)
 				{
+					dump($post);
 					$data = [
 						'title' => mysqli_real_escape_string($remote->mysqli(), $post['title']),
 						'body' => mysqli_real_escape_string($remote->mysqli(), $post['content']),
