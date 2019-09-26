@@ -37,7 +37,7 @@ $article = $articleObj->article();
 		  </div>
 		   
 		  <div class="form-group">
-		  <label><h3>Publication Date:</h3></label> <input type="date" name="pubDate" value="<?=$article['pubDate']?>" class="form-control" required>
+		  <label><h3>Publication Date:</h3></label> <input type="text" name="pubDate" value="<?=$article['pubDate']?>" class="form-control" required>
 		  </div>
 
 		  <?php if($config['enable_categories']) { ?>
