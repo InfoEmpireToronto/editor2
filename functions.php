@@ -13,6 +13,8 @@ class DB
 	{
 		$this->mysqli = new mysqli($server, $user, $pass, $db);
 
+		$this->mysqli->set_charset("utf8");
+
 		if ($this->mysqli->connect_errno) 
 		{
 		   
