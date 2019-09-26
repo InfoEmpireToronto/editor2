@@ -63,7 +63,7 @@ class DB
 		    echo "Errno: " . $this->mysqli->errno . "\n";
 		    echo "Error: " . $this->mysqli->error . "\n";
 		    // exit;
-		    
+
 		}
 
 		return $result;
@@ -207,10 +207,10 @@ class Article
 		if($type != 'all')
 			$add = " WHERE `type` = '$type' ";
 
+			 // WHERE `id` >= {$range[0]} 
         $q = "
 			SELECT * 
 			  FROM articles 
-			 -- WHERE `id` >= {$range[0]} 
 			   	   $add
 		  ORDER BY created_date DESC
 			 LIMIT {$range[0]}, {$range[1]}
@@ -228,7 +228,6 @@ class Article
 			    // $t->data['pubDate'] = date_create_from_format('Y-m-d', $t->data['pubDate']);
 	            $t->set('pubDate', (new DateTime($t->data['pubDate']))->format('F d Y'));//date_format($t->data['pubDate'], 'F d Y');
 		    }
-		    	// dump($t);
 
 
 			$out[] = $t;
@@ -359,7 +358,6 @@ class Article
 				$news = $remote->getAll("SELECT * FROM `news` WHERE `site_id` = {$site['id']}");
 				foreach($news as $post)
 				{
-					dump($post);
 					$data = [
 						'title' => mysqli_real_escape_string($remote->mysqli(), $post['title']),
 						'body' => mysqli_real_escape_string($remote->mysqli(), $post['content']),
