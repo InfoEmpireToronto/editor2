@@ -239,9 +239,9 @@ class Article
 		return $out;
 	}
 
-	public function getPostCount()
+	public function getPostCount($filter = 'article')
 	{
-		return $this->db->getValue("SELECT count(*) FROM articles");
+		return $this->db->getValue("SELECT count(*) FROM articles WHERE `type` = '$filter' ");
 	}
 
     function getURL($prefix = 'events-')
