@@ -134,7 +134,7 @@ class Article
 			}
 			if($key == 'body' || $key == 'title')
 				$val = mysqli_real_escape_string($this->db->mysqli(), $val);
-			
+
 			$a .= " `$key` = '$val' ";
 		}
 		// $a = implode(', ', $d);
@@ -337,10 +337,49 @@ class Article
 
 					(new Article())->add($data);
 				}
+
+
+				$news = $remote->getAll("SELECT * FROM `news` WHERE `site_id` = {$site['id']}");
+				foreach($news as $new)
+				{
+					$data = [
+						'title' => mysqli_real_escape_string($remote->mysqli(), $post['title']),
+						'body' => mysqli_real_escape_string($remote->mysqli(), $post['content']),
+						'metaTitle' => $post['meta_title'],
+						'metaDesc' => $post['meta_description'],
+						'active' => $post['status'],
+						'pubDate' => $post['date_display'],
+						'type' => 'news'
+					];
+
+					(new Article())->add($data);
+				}
+
+				$faq = $remote->getAll("SELECT * FROM `faq` WHERE `site_id` = {$site['id']}");
+				foreach($news as $new)
+				{
+					$data = [
+						'title' => mysqli_real_escape_string($remote->mysqli(), $post['question']),
+						'body' => mysqli_real_escape_string($remote->mysqli(), $post['answer']),
+						'category' => $post['category'],
+						'active' => $post['status'],
+						'pubDate' => $post['date_display'],
+						'type' => 'faq'
+					];
+
+					(new Article())->add($data);
+				}
+
 			}
 		}
 
 		dd('Done Booting, refresh...');
+	}
+
+	function reset()
+	{
+		$this->db->query("DROP TABLE `articles`, `categories`");
+		$this->boot();
 	}
 }
 
