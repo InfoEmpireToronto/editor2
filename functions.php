@@ -58,11 +58,6 @@ class DB
 	{
 		if (!$result = $this->mysqli->query($q)) 
 		{
-		    // Oh no! The query failed. 
-		    echo "Sorry, the website is experiencing problems.";
-
-		    // Again, do not do this on a public site, but we'll show you how
-		    // to get the error information
 		    echo "Error: Our query failed to execute and here is why: \n";
 		    echo "Query: <code>" . $q . "</code>\n";
 		    echo "Errno: " . $this->mysqli->errno . "\n";
@@ -128,10 +123,6 @@ class Article
 	function set($key, $val)
 	{
 		$this->data[$key] = $val;
-		// $this->$key = $val;
-		// $this->title = $this->data['title'];
-		// $this->content = $this->data['body'];
-		// $this->date_utc = $this->data['pubDate'];
 	}
 
 	function update($d)
@@ -148,7 +139,6 @@ class Article
 
 			$a .= " `$key` = '$val' ";
 		}
-		// $a = implode(', ', $d);
 		$this->db->query("UPDATE articles SET $a WHERE `id` = {$this->data['id']}");
 	}
 
@@ -169,7 +159,6 @@ class Article
 			$fields .= " `$key`";
 			$vals .= " '$val' ";
 		}
-		// $a = implode(', ', $d);
 		$this->db->query("INSERT INTO articles ($fields) VALUES ($vals)");
 	}
 
