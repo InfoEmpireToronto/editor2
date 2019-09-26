@@ -58,10 +58,10 @@ class DB
 	{
 		if (!$result = $this->mysqli->query($q)) 
 		{
-		    echo "Error: Our query failed to execute and here is why: \n";
+		    echo "<hr><p>Error: Our query failed to execute and here is why: \n</p>";
 		    echo "Query: <code>" . $q . "</code>\n";
-		    echo "Errno: " . $this->mysqli->errno . "\n";
-		    echo "Error: " . $this->mysqli->error . "\n";
+		    echo "<p>Err No: " . $this->mysqli->errno . "\n</p>";
+		    echo "<p>Error: " . $this->mysqli->error . "\n</p><hr>";
 		    // exit;
 
 		}
