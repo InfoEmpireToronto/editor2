@@ -360,7 +360,7 @@ class Article
 				{
 					$data = [
 						'title' => mysqli_real_escape_string($remote->mysqli(), $post['title']),
-						'body' => mysqli_real_escape_string($remote->mysqli(), $post['content']),
+						'body' => ($remote->mysqli(), $post['content']),
 						'metaTitle' => $post['meta_title'],
 						'metaDesc' => $post['meta_description'],
 						'active' => $post['status'],
