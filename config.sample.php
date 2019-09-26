@@ -9,10 +9,10 @@ $config['dbPass'] = '';
 $config['importOnLaunch'] = FALSE;
 $config['client'] = 0;
 
-$config['enable_categories'] = '1';
+$config['enable_categories'] = FALSE;
 
-$config['AppLocation'] = '/';
-$config['AppURL'] = 'http://****'.$config['AppLocation'];
+$config['AppLocation'] = '/editor/';
+$config['AppURL'] = 'http://SITE'.$config['AppLocation'];
 
 $config['login'] = 'admin';
 $config['password'] = 'admin';
