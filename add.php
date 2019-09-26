@@ -13,6 +13,7 @@
          <label for="type1"><h3>Type of post:</h3></label>
          <select name="type" class="form-control">
           <option value="article">Article</option>
+          <option value="news">News</option>
           <option value="FAQ">FAQ</option>
 
         </select>
