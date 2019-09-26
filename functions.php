@@ -102,6 +102,8 @@ class Article
 			$this->data = $this->db->getRow("SELECT * FROM articles WHERE id = $id");
 			$this->data['body'] = stripslashes($this->data['body']);
 			$this->data['title'] = stripslashes($this->data['title']);
+			$this->data['metaTitle'] = stripslashes($this->data['metaTitle']);
+			$this->data['metaDesc'] = stripslashes($this->data['metaDesc']);
 
 			$this->title = $this->data['title'];
 			$this->content = $this->data['body'];
@@ -168,7 +170,7 @@ class Article
 				$fields .= ', ';
 				$vals .= ', ';
 			}
-			if($key == 'body' || $key == 'title')
+			if($key == 'body' || $key == 'title' || $key == 'metaTitle' || $key == 'metaDesc')
 				$val = mysqli_real_escape_string($this->db->mysqli(), stripslashes($val));
 
 			$fields .= " `$key`";
