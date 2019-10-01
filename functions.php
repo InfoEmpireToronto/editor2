@@ -342,8 +342,8 @@ class Article
 		{
 			$val = $v['href'];
 			dump($v);
-			// if(!file_exists($val))
-				// unset($links[$key]);
+			if(!file_exists($val))
+				unset($links[$key]);
 			
 
 			if(substr($val, 0, 4) == 'http')
