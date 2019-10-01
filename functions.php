@@ -457,7 +457,7 @@ class Article
 
 				// dump($newURL);
 
-				$url->loc = $newURL;
+				$url->loc = $this->config['SiteURL'].'/'.$newURL;
 			}
 
 

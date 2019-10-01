@@ -11,8 +11,9 @@ $config['client'] = 0;
 
 $config['enable_categories'] = FALSE;
 
+$config['SiteURL'] = 'http://localhost';
 $config['AppLocation'] = '/editor/';
-$config['AppURL'] = 'http://SITE'.$config['AppLocation'];
+$config['AppURL'] = $config['SiteURL'].$config['AppLocation'];
 
 $config['login'] = 'admin';
 $config['password'] = 'admin';
