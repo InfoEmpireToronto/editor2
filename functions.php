@@ -383,7 +383,7 @@ class Article
 					];
 
 					$new = (new Article())->add($data);
-					$newData[$post->id] = $new;
+					$newData[$post['id']] = $new;
 				}
 
 
@@ -402,7 +402,7 @@ class Article
 					];
 
 					$new = (new Article())->add($data);
-					$newData[$post->id] = $new;
+					$newData[$post['id']] = $new;
 				}
 
 				$faq = $remote->getAll("SELECT * FROM `faq` WHERE `site_id` = {$site['id']}");
@@ -419,7 +419,7 @@ class Article
 					];
 
 					$new = (new Article())->add($data);
-					$newData[$post->id] = $new;
+					$newData[$post['id']] = $new;
 				}
 
 			}
