@@ -182,7 +182,7 @@ class Article
 		}
 		$this->db->query("INSERT INTO articles ($fields) VALUES ($vals)");
 
-		return new Article($this->mysqli->insert_id);
+		return new Article($this->db->insert_id);
 	}
 
 	public function addCat($name)
