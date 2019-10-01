@@ -424,7 +424,7 @@ class Article
 
 			}
 		}
-dump($this->config);
+
 		if(file_exists($this->config['sitemap']))
 		{
 			dump('Sitemap Found!');
@@ -445,7 +445,10 @@ dump($this->config);
 				$end = strpos($url->loc, '-', $start);
 
 				$title = urldecode(substr($url->loc, $start, ($end-$start)));
-				dump($url->loc);
+				$id = urldecode(substr($url->loc, $end, 7));
+
+				$newURL = $newData[$id]->getURL($this->config['articlePrefix']);
+				dump($newURL);
 			}
 
 			dd($urls);
