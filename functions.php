@@ -340,8 +340,8 @@ class Article
 
 		foreach($links as $key => $v)
 		{
-			$val = $v['href'];
-			dump($v);
+			$val = getcwd().$v['href'];
+			// dump($v);
 			if(!file_exists($val)){
 				unset($links[$key]);
 				dump('Doesnt exist:'.$val);
