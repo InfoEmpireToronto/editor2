@@ -486,7 +486,7 @@ class Article
 					continue;
 
 
-				$generator->addUrl($this->config['SiteURL'].'/'.$v['href'], new DateTime(), 'always', '0.5', []);
+				$generator->addUrl($v['href'], new DateTime(), 'always', '0.5', []);
 
 
 
