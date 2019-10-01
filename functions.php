@@ -446,12 +446,12 @@ class Article
 
 				$title = urldecode(substr($url->loc, $start, ($end-$start)));
 				$id = urldecode(substr($url->loc, $end+1, 7));
-				$newURL = $newData[$id]->getURL($this->config['articlePrefix']);
+				// $newURL = $newData[$id]->getURL($this->config['articlePrefix']);
 
 				dump($id);
 				dump($title);
 				dump($url);
-				dump($newURL);
+				// dump($newURL);
 			}
 
 
