@@ -485,13 +485,13 @@ class Article
 				if($v['href'] == 'index.php')
 					continue;
 
-				if(strpos('jpg',$v['href']))
+				if(strpos($v['href'], 'jpg'))
 					continue;
 
-				if(strpos('png',$v['href']))
+				if(strpos($v['href'], 'png'))
 					continue;
 
-				if(strpos('gif',$v['href']))
+				if(strpos($v['href'], 'gif'))
 					continue;
 
 				$generator->addUrl('/'.$v['href'], new DateTime(), 'always', '0.5', []);
