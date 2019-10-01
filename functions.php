@@ -335,7 +335,24 @@ class Article
 
 	private function boot()
 	{
-		
+		$generator = new \Icamys\SitemapGenerator\SitemapGenerator('example.com');
+		$links = $generator->getLinks('http://1clinic.ca');
+
+		foreach($links as $key => $v)
+		{
+			$val = $v['href'];
+			dump($v);
+			// if(!file_exists($val))
+				// unset($links[$key]);
+			
+
+			if(substr($val, 0, 4) == 'http')
+				unset($links[$key]);
+		}
+
+		dd($links);
+
+
 		dump('Booting!');
 
 		$this->db->query("CREATE TABLE `articles` (
