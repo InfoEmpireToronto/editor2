@@ -446,6 +446,13 @@ class Article
 
 				$title = urldecode(substr($url->loc, $start, ($end-$start)));
 				$id = urldecode(substr($url->loc, $end+1, 7));
+
+				if(!isset($newData[$id]))
+				{
+					
+					continue;
+				}
+
 				$newURL = $newData[$id]->getURL($this->config['articlePrefix']);
 
 				// dump($newURL);
@@ -454,8 +461,7 @@ class Article
 			}
 
 
-
-dd($xml);
+			$xml->save($this->config['sitemap']);
 
 		}
 
