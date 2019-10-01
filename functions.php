@@ -1,6 +1,8 @@
 <?php
 
 include_once('config.php');
+include "src/SitemapGenerator.php";
+
 session_start();
 /**
 * 
@@ -179,6 +181,8 @@ class Article
 			$vals .= " '$val' ";
 		}
 		$this->db->query("INSERT INTO articles ($fields) VALUES ($vals)");
+
+		return new Article($this->mysqli->insert_id);
 	}
 
 	public function addCat($name)
@@ -331,7 +335,7 @@ class Article
 
 	private function boot()
 	{
-
+		
 		dump('Booting!');
 
 		$this->db->query("CREATE TABLE `articles` (
@@ -359,6 +363,8 @@ class Article
 		{
 			dump('Importing...');
 
+			$newData = [];
+
 			$remote = new DB('firecrosser.com', 'develope_editor', 'develope_reader', '%b5tF[r(8-4U');
 
 			$sites = $remote->getAll("SELECT * FROM `sites` WHERE `client_id` = {$this->config['client']}");
@@ -376,7 +382,8 @@ class Article
 						'type' => $post['type'] == 0 ? 'FAQ' : 'article'
 					];
 
-					(new Article())->add($data);
+					$new = (new Article())->add($data);
+					$newData[$post->id] = $new;
 				}
 
 
@@ -394,7 +401,8 @@ class Article
 						'type' => 'news'
 					];
 
-					(new Article())->add($data);
+					$new = (new Article())->add($data);
+					$newData[$post->id] = $new;
 				}
 
 				$faq = $remote->getAll("SELECT * FROM `faq` WHERE `site_id` = {$site['id']}");
@@ -410,11 +418,41 @@ class Article
 						'type' => 'FAQ'
 					];
 
-					(new Article())->add($data);
+					$new = (new Article())->add($data);
+					$newData[$post->id] = $new;
 				}
 
 			}
 		}
+
+		if(file_exists($this->config['sitemap']))
+		{
+			dump('Sitemap Found!');
+
+			$xml = simplexml_load_file($this->config['sitemap']);
+
+			$urls = $xml->url;
+
+			foreach($xml->url as $url)
+			{
+				if(!strpos($url->loc, $this->config['articlePrefix']))
+					continue;
+
+				if(strpos($url->loc, $this->config['articlePrefix'].'page'))
+					continue;
+
+				$start = strpos($url->loc, $this->config['articlePrefix'])+strlen($this->config['articlePrefix']);
+				$end = strpos($url->loc, '-', $start);
+
+				$title = urldecode(substr($url->loc, $start, ($end-$start)));
+				dump($url->loc);
+			}
+
+			dd($urls);
+
+
+		}
+
 
 		dump('Done Booting, refresh...');
 	}

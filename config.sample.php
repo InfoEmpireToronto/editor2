@@ -17,6 +17,9 @@ $config['AppURL'] = 'http://SITE'.$config['AppLocation'];
 $config['login'] = 'admin';
 $config['password'] = 'admin';
 
+$config['sitemap'] = '../sitemap.xml';
+$config['articlePrefix'] = 'blog-';
+
 
 if($config['DBUG'])
 {
