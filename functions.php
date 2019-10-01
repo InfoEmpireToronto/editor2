@@ -340,7 +340,7 @@ class Article
 
 		foreach($links as $key => $v)
 		{
-			$val = getcwd().$v['href'];
+			$val = getcwd().'/../'.$v['href'];
 			// dump($v);
 			if(!file_exists($val)){
 				unset($links[$key]);
