@@ -449,7 +449,7 @@ class Article
 
 				if(!isset($newData[$id]))
 				{
-					
+
 					continue;
 				}
 
@@ -461,7 +461,7 @@ class Article
 			}
 
 
-			$xml->save($this->config['sitemap']);
+			file_put_contents($this->config['sitemap'], $xml->asXML());
 
 		}
 
