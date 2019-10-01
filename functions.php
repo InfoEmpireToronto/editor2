@@ -497,9 +497,9 @@ class Article
 				$generator->addUrl($this->config['SiteURL'].'/'.$article->getURL($this->config['articlePrefix']), new DateTime(), 'always', '0.5', []);
 			}
 
-			dump($generator->createSitemap());
+			$generator->createSitemap();
 
-			// $generator->writeSitemap();
+			$generator->writeSitemap();
 
 		}
 
