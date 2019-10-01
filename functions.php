@@ -467,10 +467,10 @@ class Article
 
 			dump('Sitemap Not Found; Generating...');
 
-			$generator = new \Icamys\SitemapGenerator\SitemapGenerator($config['SiteURL']);
-			$generator->sitemapFileName = $config['sitemap'];
+			$generator = new \Icamys\SitemapGenerator\SitemapGenerator($this->config['SiteURL']);
+			$generator->sitemapFileName = $this->config['sitemap'];
 
-			$links = $generator->getLinks($config['SiteURL']);
+			$links = $generator->getLinks($this->config['SiteURL']);
 
 			foreach($links as $key => $v)
 			{
@@ -486,7 +486,7 @@ class Article
 					continue;
 
 
-				$generator->addUrl($config['SiteURL'].'/'.$v['href'], new DateTime(), 'always', '0.5', []);
+				$generator->addUrl($this->config['SiteURL'].'/'.$v['href'], new DateTime(), 'always', '0.5', []);
 
 
 
@@ -494,7 +494,7 @@ class Article
 
 			foreach($newData as $article)
 			{
-				$generator->addUrl($config['SiteURL'].'/'.$article->getURL($this->config['articlePrefix']), new DateTime(), 'always', '0.5', []);
+				$generator->addUrl($this->config['SiteURL'].'/'.$article->getURL($this->config['articlePrefix']), new DateTime(), 'always', '0.5', []);
 			}
 
 			dump($generator->createSitemap());
