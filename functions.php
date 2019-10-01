@@ -485,8 +485,16 @@ class Article
 				if($v['href'] == 'index.php')
 					continue;
 
+				if(strpos('jpg',$v['href']))
+					continue;
 
-				$generator->addUrl($v['href'], new DateTime(), 'always', '0.5', []);
+				if(strpos('png',$v['href']))
+					continue;
+
+				if(strpos('gif',$v['href']))
+					continue;
+
+				$generator->addUrl('/'.$v['href'], new DateTime(), 'always', '0.5', []);
 
 
 
@@ -494,7 +502,7 @@ class Article
 
 			foreach($newData as $article)
 			{
-				$generator->addUrl($this->config['SiteURL'].'/'.$article->getURL($this->config['articlePrefix']), new DateTime(), 'always', '0.5', []);
+				$generator->addUrl('/'.$article->getURL($this->config['articlePrefix']), new DateTime(), 'always', '0.5', []);
 			}
 
 			$generator->createSitemap();
