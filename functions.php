@@ -424,7 +424,7 @@ class Article
 
 			}
 		}
-
+dump($this->config);
 		if(file_exists($this->config['sitemap']))
 		{
 			dump('Sitemap Found!');
