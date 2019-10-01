@@ -335,26 +335,7 @@ class Article
 
 	private function boot()
 	{
-		$generator = new \Icamys\SitemapGenerator\SitemapGenerator('example.com');
-		$links = $generator->getLinks('http://1clinic.ca');
-
-		foreach($links as $key => $v)
-		{
-			$val = getcwd().'/../'.$v['href'];
-			// dump($v);
-			if(!file_exists($val)){
-				unset($links[$key]);
-				dump('Doesnt exist:'.$val);
-			}
-			
-
-			if(substr($val, 0, 4) == 'http')
-				unset($links[$key]);
-		}
-
-		dd($links);
-
-
+		
 		dump('Booting!');
 
 		$this->db->query("CREATE TABLE `articles` (
@@ -481,6 +462,44 @@ class Article
 
 
 			file_put_contents($this->config['sitemap'], $xml->asXML());
+
+		}else{
+
+			dump('Sitemap Not Found; Generating...');
+
+			$generator = new \Icamys\SitemapGenerator\SitemapGenerator($config['SiteURL']);
+			$generator->sitemapFileName = $config['sitemap'];
+
+			$links = $generator->getLinks($config['SiteURL']);
+
+			foreach($links as $key => $v)
+			{
+				$val = getcwd().'/../'.$v['href'];
+
+				if(!file_exists($val))
+					continue;
+
+				if(substr($val, 0, 4) == 'http')
+					continue;
+
+				if($v['href'] == 'index.php')
+					continue;
+
+
+				$generator->addUrl($config['SiteURL'].'/'.$v['href'], new DateTime(), 'always', '0.5', []);
+
+
+
+			}
+
+			foreach($newData as $article)
+			{
+				$generator->addUrl($config['SiteURL'].'/'.$article->getURL($this->config['articlePrefix']), new DateTime(), 'always', '0.5', []);
+			}
+
+			dump($generator->createSitemap());
+
+			// $generator->writeSitemap();
 
 		}
 
