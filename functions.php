@@ -231,7 +231,7 @@ class Article
 
 
 //Reader Functions
-	public function getPosts($type, $range)
+	public function getPosts($type, $range = [0, 100])
 	{
 	    $add = '';
 		if($type != 'all')
