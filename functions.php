@@ -272,8 +272,9 @@ class Article
 		return $this->db->getValue("SELECT count(*) FROM articles WHERE `type` = '$filter' ");
 	}
 
-    function getURL($prefix = $this->config['articlePrefix'])
-	{		
+    function getURL($prefix = false)
+	{
+		$prefix = $prefix ? $prefix : $this->config['articlePrefix'];		
 		return $prefix . urlencode(trim(str_replace('#', '', $this->data['title']))) . '-' . $this->data['id'];
 	}
 	
