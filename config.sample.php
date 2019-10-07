@@ -16,7 +16,7 @@ $config['AppLocation'] = '/editor/';
 $config['AppURL'] = $config['SiteURL'].$config['AppLocation'];
 
 $config['login'] = 'admin';
-$config['password'] = 'admin';
+$config['password'] = 'IE#226com';
 
 $config['sitemap'] = '../sitemap.xml';
 $config['articlePrefix'] = 'blog-';

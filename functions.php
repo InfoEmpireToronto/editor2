@@ -180,6 +180,7 @@ class Article
 			$fields .= " `$key`";
 			$vals .= " '$val' ";
 		}
+
 		$this->db->query("INSERT INTO articles ($fields) VALUES ($vals)");
 
 		return new Article($this->db->mysqli()->insert_id);
@@ -382,6 +383,11 @@ class Article
 						'type' => $post['type'] == 0 ? 'FAQ' : 'article'
 					];
 
+					if($this->config['enable_categories'])
+					{
+						$data['category'] = $post['category'];
+					}
+
 					$new = (new Article())->add($data);
 					$newData[$post['id']] = $new;
 				}
@@ -400,6 +406,10 @@ class Article
 						'created_date' => $post['date_created'],
 						'type' => 'news'
 					];
+					if($this->config['enable_categories'])
+					{
+						$data['category'] = $post['category'];
+					}
 
 					$new = (new Article())->add($data);
 					$newData[$post['id']] = $new;
@@ -417,6 +427,10 @@ class Article
 						'created_date' => $post['date_created'],
 						'type' => 'FAQ'
 					];
+					if($this->config['enable_categories'])
+					{
+						$data['category'] = $post['category'];
+					}
 
 					$new = (new Article())->add($data);
 					$newData[$post['id']] = $new;
